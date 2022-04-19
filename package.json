@@ -5,7 +5,9 @@
   "scripts": {
     "start": "node ./bin/www",
     "setup": "pm2 deploy production setup",
-    "deploy": "pm2 deploy production --force"
+    "deploy": "pm2 deploy production --force",
+    "docker-build": "git pull && npm install && docker build -t docker:webapp .",
+    "docker-run": "docker run -d --name webapp-network --network testnet --network-alias webapp-network -p 3000:3000 docker:webapp"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -13,6 +15,7 @@
     "ejs": "~2.6.1",
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
+    "mongodb": "^4.5.0",
     "morgan": "~1.9.1"
   }
 }
